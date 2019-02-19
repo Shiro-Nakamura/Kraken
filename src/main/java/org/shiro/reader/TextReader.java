@@ -2,6 +2,7 @@ package org.shiro.reader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,20 +21,16 @@ public class TextReader implements FeedReader {
 	}
 
 	public String readFeeds() {
-		URL url;
 		StringBuilder response = new StringBuilder();
-
 		try {
-			url = new URL(address);
-			BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+			InputStream is = new URL(address).openStream();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 			String inputLine;
-			while ((inputLine = in.readLine()) != null) {
+			while ((inputLine = reader.readLine()) != null) {
 				response.append(inputLine);
 				response.append("\n");
 			}
-
-			in.close();
-
+			reader.close();
 		} catch (MalformedURLException e) {
 			log.error("failed to open address: " + address, e);
 		} catch (IOException e) {
