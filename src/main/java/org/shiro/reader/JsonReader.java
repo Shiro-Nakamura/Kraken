@@ -25,12 +25,17 @@ public class JsonReader implements FeedReader {
 		JSONObject json = new JSONObject();
 		try {
 			URL url = new URL(address);
-			json = new JSONObject(IOUtils.toString(url, Charset.forName("UTF-8")));
+			String raw = IOUtils.toString(url, Charset.forName("UTF-8"));
+			if (raw.isEmpty())
+				throw new IllegalArgumentException("no content recevied");
+			json = new JSONObject(raw);
 			return json.toString();
 		} catch (MalformedURLException e) {
 			log.error("failed to open address: " + address, e);
 		} catch (IOException e) {
 			log.error("failed to read json from address: " + address, e);
+		} catch (IllegalArgumentException e) {
+			log.error("failed to get json from address: " + address, e);
 		}
 		return json.toString();
 	}

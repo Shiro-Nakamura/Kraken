@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 public class OpenPhish implements FeedCrawlerService {
 
 	private static final Logger log = LoggerFactory.getLogger(OpenPhish.class);
-
 	private static final String ADDRESS = "https://openphish.com/feed.txt";
 
 	public Set<String> getMalwareFeeds() {
@@ -24,7 +23,6 @@ public class OpenPhish implements FeedCrawlerService {
 
 	private Set<String> convertResponseToFeeds(String response) {
 		String[] urls = response.split("\n");
-		log.debug("read urls: " + Arrays.toString(urls));
 		log.info("finish read from service: " + OpenPhish.class.getSimpleName() + ", number of feeds: " + urls.length);
 		return new HashSet<String>(Arrays.asList(urls));
 	}

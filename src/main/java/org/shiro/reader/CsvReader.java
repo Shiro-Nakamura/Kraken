@@ -12,16 +12,24 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.opencsv.CSVReader;
-
 public class CsvReader implements FeedReader {
 
 	private static final Logger log = LoggerFactory.getLogger(CsvReader.class);
 
 	private String address;
+	private String delimiter;
+	private String skipPrefix;
 
-	public CsvReader(String address) {
+	public CsvReader(String address, String delimiter) {
 		this.address = address;
+		this.delimiter = delimiter;
+		this.skipPrefix = "";
+	}
+
+	public CsvReader(String address, String delimiter, String skipPrefix) {
+		this.address = address;
+		this.delimiter = delimiter;
+		this.skipPrefix = skipPrefix;
 	}
 
 	public String readFeeds() {
@@ -29,13 +37,18 @@ public class CsvReader implements FeedReader {
 		try {
 			InputStream is = new URL(address).openStream();
 			Reader reader = new BufferedReader(new InputStreamReader(is));
-			CSVReader csvReader = new CSVReader(reader);
 
-			String[] values = null;
-			while ((values = csvReader.readNext()) != null) {
-				response.append(Arrays.asList(values));
+			try (BufferedReader br = new BufferedReader(reader)) {
+				String line;
+				while ((line = br.readLine()) != null) {
+					if (skipPrefix.isEmpty() || line.startsWith(skipPrefix) == false) {
+						String[] values = line.split(delimiter);
+						response.append(Arrays.asList(values));
+						response.append("\n");
+					}
+				}
 			}
-			csvReader.close();
+
 		} catch (MalformedURLException e) {
 			log.error("failed to open address: " + address, e);
 		} catch (IOException e) {

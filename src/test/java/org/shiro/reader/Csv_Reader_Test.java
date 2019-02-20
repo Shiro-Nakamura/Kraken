@@ -12,12 +12,11 @@ public class Csv_Reader_Test extends TestCase {
 	public void test_read_csv() {
 		String address = "https://sample-videos.com/csv/Sample-Spreadsheet-1000-rows.csv";
 
-		CsvReader reader = new CsvReader(address);
-		log.info("read response with :" + reader.getClass().getSimpleName());
-
+		CsvReader reader = new CsvReader(address, ",");
+		log.info("read response with: " + reader.getClass().getSimpleName());
 		String response = reader.readFeeds();
-		log.info("response: " + response);
 		assertNotNull(response);
+		log.info("response: " + response);
 		assertFalse(response.isEmpty());
 	}
 
