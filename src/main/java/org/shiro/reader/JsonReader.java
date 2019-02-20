@@ -22,14 +22,15 @@ public class JsonReader implements FeedReader {
 
 	@Override
 	public String readFeeds() {
-		JSONObject json = new JSONObject();
 		try {
+			JSONObject json = new JSONObject();
 			URL url = new URL(address);
 			String raw = IOUtils.toString(url, Charset.forName("UTF-8"));
 			if (raw.isEmpty())
 				throw new IllegalArgumentException("no content recevied");
 			json = new JSONObject(raw);
 			return json.toString();
+			
 		} catch (MalformedURLException e) {
 			log.error("failed to open address: " + address, e);
 		} catch (IOException e) {
@@ -37,6 +38,6 @@ public class JsonReader implements FeedReader {
 		} catch (IllegalArgumentException e) {
 			log.error("failed to get json from address: " + address, e);
 		}
-		return json.toString();
+		return "";
 	}
 }

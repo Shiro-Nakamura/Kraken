@@ -20,10 +20,8 @@ public class PhishTank_Test {
 		assertNotNull(feeds);
 		assertFalse(feeds.isEmpty());
 		log.info("number of received feeds: " + feeds.size());
-
 		String firstFeed = feeds.iterator().next();
 		log.info("first received feed: " + firstFeed);
-		assertFalse(firstFeed.equals("{}"));
 
 	}
 }

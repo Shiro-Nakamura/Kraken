@@ -17,7 +17,13 @@ public class PhishTank implements FeedCrawlerService {
 		JsonReader reader = new JsonReader(ADDRESS);
 		log.info("start reading from service: " + PhishTank.class.getSimpleName());
 		String response = reader.readFeeds();
-		log.info("finish read from service: " + PhishTank.class.getSimpleName());
-		return new HashSet<>(Arrays.asList(response));
+		if (response.isEmpty()) {
+			log.warn("no content read from service: " + PhishTank.class.getSimpleName());
+			return new HashSet<>();
+		} else {
+			log.info("finish read from service: " + PhishTank.class.getSimpleName());
+			return new HashSet<>(Arrays.asList(response));
+
+		}
 	}
 }
