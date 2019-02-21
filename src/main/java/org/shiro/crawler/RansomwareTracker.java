@@ -1,4 +1,4 @@
-package org.shiro.service;
+package org.shiro.crawler;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import org.shiro.reader.CsvReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RansomwareTracker implements FeedCrawlerService {
+public class RansomwareTracker implements FeedCrawler {
 
 	private static final Logger log = LoggerFactory.getLogger(RansomwareTracker.class);
 	private static final String ADDRESS = "https://ransomwaretracker.abuse.ch/feeds/csv/";

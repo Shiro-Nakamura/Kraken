@@ -1,4 +1,4 @@
-package org.shiro.service;
+package org.shiro.crawler;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Set;
 
 import org.junit.Test;
+import org.shiro.crawler.RansomwareTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,4 @@
-package org.shiro.service;
+package org.shiro.crawler;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import org.shiro.reader.JsonReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PhishTank implements FeedCrawlerService {
+public class PhishTank implements FeedCrawler {
 
 	private static final Logger log = LoggerFactory.getLogger(PhishTank.class);
 	private static final String ADDRESS = "http://data.phishtank.com/data/online-valid.json";

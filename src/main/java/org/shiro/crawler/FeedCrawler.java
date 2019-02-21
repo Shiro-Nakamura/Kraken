@@ -1,7 +1,7 @@
-package org.shiro.service;
+package org.shiro.crawler;
 
 import java.util.Set;
 
-public interface FeedCrawlerService {
+public interface FeedCrawler {
 	public Set<String> getMalwareFeeds();
 }

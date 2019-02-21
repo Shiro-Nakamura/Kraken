@@ -1,4 +1,4 @@
-package org.shiro.service;
+package org.shiro.crawler;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -6,22 +6,23 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Set;
 
 import org.junit.Test;
+import org.shiro.crawler.OpenPhish;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PhishTank_Test {
+public class OpenPhish_Test {
 
-	private static final Logger log = LoggerFactory.getLogger(PhishTank_Test.class);
+	private static final Logger log = LoggerFactory.getLogger(OpenPhish_Test.class);
 
 	@Test
 	public void test_openphish_service() {
-		PhishTank service = new PhishTank();
+		OpenPhish service = new OpenPhish();
 		Set<String> feeds = service.getMalwareFeeds();
 		assertNotNull(feeds);
 		assertFalse(feeds.isEmpty());
 		log.info("number of received feeds: " + feeds.size());
-		String firstFeed = feeds.iterator().next();
-		log.info("first received feed: " + firstFeed);
+		log.info("first received feed: " + feeds.iterator().next());
 
 	}
+
 }

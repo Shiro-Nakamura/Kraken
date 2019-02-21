@@ -1,6 +1,6 @@
 package org.shiro.main;
 
-import org.shiro.service.OpenPhish;
+import org.shiro.crawler.OpenPhish;
 
 public class Main {
 	

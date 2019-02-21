@@ -1,4 +1,4 @@
-package org.shiro.service;
+package org.shiro.crawler;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import org.shiro.reader.TextReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OpenPhish implements FeedCrawlerService {
+public class OpenPhish implements FeedCrawler {
 
 	private static final Logger log = LoggerFactory.getLogger(OpenPhish.class);
 	private static final String ADDRESS = "https://openphish.com/feed.txt";
