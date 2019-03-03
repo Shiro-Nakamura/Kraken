@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Feeds {
 
-	private List<Feed> feeds = new ArrayList<Feed>();
+	private List<String> feeds = new ArrayList<String>();
 
-	public void addtFeed(Feed feed) {
+	public void addtFeed(String feed) {
 		feeds.add(feed);
 	}
 
-	public List<Feed> getFeeds() {
+	public List<String> getFeeds() {
 		return feeds;
 	}
 }
