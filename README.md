@@ -1,5 +1,5 @@
 # Kraken
 
-Crawler for several public malware feed services
+Crawler for several public malware feed services.
 
 
