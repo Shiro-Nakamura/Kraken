@@ -20,5 +20,4 @@ public class Feeds {
 	public void addIp(String ip) {
 		ips.add(ip);
 	}
-
 }
