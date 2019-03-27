@@ -17,7 +17,7 @@ public class FeedConverter {
 				feeds.addIp(feed);
 			} else if (isValidUrl(feed)) {
 				feeds.addUrl(feed);
-			} else {
+			} else if (isValidHash(feed)) {
 				feeds.addHash(feed);
 			}
 		}
@@ -33,6 +33,18 @@ public class FeedConverter {
 	private static boolean isValidIp(String ip) {
 		InetAddressValidator validator = new InetAddressValidator();
 		return validator.isValid(ip);
+	}
+
+	private static boolean isValidHash(String hash) {
+		return (isValidMd5(hash) || isValidSHA1(hash));
+	}
+
+	private static boolean isValidMd5(String s) {
+		return s.matches("^[a-fA-F0-9]{32}$");
+	}
+
+	private static boolean isValidSHA1(String s) {
+		return s.matches("^[a-fA-F0-9]{40}$");
 	}
 
 }

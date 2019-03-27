@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.shiro.crawler.OpenPhish;
-import org.shiro.main.Kraken;
+import org.shiro.service.Kraken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

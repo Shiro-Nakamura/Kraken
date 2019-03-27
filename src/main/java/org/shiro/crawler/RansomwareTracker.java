@@ -22,7 +22,7 @@ public class RansomwareTracker implements FeedCrawler {
 
 	private Set<String> convertResponseToFeeds(String response) {
 		String[] urls = response.split("\n");
-		log.info("finish read from service: " + OpenPhish.class.getSimpleName() + ", number of feeds: " + urls.length);
+		log.info("finish read from service: " + RansomwareTracker.class.getSimpleName() + ", number of feeds: " + urls.length);
 		return new HashSet<String>(Arrays.asList(urls));
 	}
 }

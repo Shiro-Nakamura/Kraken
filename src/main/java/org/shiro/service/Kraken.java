@@ -1,4 +1,4 @@
-package org.shiro.main;
+package org.shiro.service;
 
 import java.util.ArrayList;
 import java.util.HashSet;

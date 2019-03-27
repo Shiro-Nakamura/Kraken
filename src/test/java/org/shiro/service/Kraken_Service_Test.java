@@ -8,7 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.shiro.crawler.OpenPhish;
-import org.shiro.main.Kraken;
+import org.shiro.crawler.RansomwareTracker;
+import org.shiro.service.Kraken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,6 +36,7 @@ public class Kraken_Service_Test {
 	public void test_kraken_thread() {
 		Kraken kraken = new Kraken();
 		kraken.addFeedCrawlerService(new OpenPhish());
+		kraken.addFeedCrawlerService(new RansomwareTracker());
 		kraken.setTimeUnit(TimeUnit.SECONDS);
 		kraken.setInterval(10);
 		
@@ -42,7 +44,7 @@ public class Kraken_Service_Test {
 		thread.start();
 		
 		try {
-			TimeUnit.SECONDS.sleep(10);
+			TimeUnit.SECONDS.sleep(15);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
